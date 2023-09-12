@@ -9,7 +9,7 @@ resource "aws_ecs_task_definition" "taskdef_service_go" {
             "memory": 200,
             "portMappings": [
                 {
-                    "containerPort": 80,
+                    "containerPort": 800,
                     "protocol": "tcp"
                 }
             ]
