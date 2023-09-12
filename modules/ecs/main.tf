@@ -39,30 +39,29 @@ resource "aws_ecs_cluster" "foo" {
   }
 }
 
-resource "aws_autoscaling_group" "test" {
-  # ... other configuration, including potentially other tags ...
+resource "aws_ecs_service" "go" {
+  iam_role                           = "ecsServiceRole"
+  cluster                            = aws_ecs_cluster.foo.id
+  deployment_maximum_percent         = "100"
+  deployment_minimum_healthy_percent = "0"
+  desired_count                      = "1"
+  health_check_grace_period_seconds  = "0"
+  launch_type                        = "EC2"
+  name                               = "miki"
+  scheduling_strategy                = "REPLICA"
+  task_definition                    = "miki"
 
-  tag {
-    key                 = "AmazonECSManaged"
-    value               = true
-    propagate_at_launch = true
+  deployment_controller {
+    type = "ECS"
   }
-  min_size = "1"
-  max_size = "1"
-}
 
-resource "aws_ecs_capacity_provider" "test" {
-  name = "test"
+  ordered_placement_strategy {
+    field = "attribute:ecs.availability-zone"
+    type  = "spread"
+  }
 
-  auto_scaling_group_provider {
-    auto_scaling_group_arn         = aws_autoscaling_group.test.arn
-    managed_termination_protection = "ENABLED"
-
-    managed_scaling {
-      maximum_scaling_step_size = 1000
-      minimum_scaling_step_size = 1
-      status                    = "ENABLED"
-      target_capacity           = 10
-    }
+  ordered_placement_strategy {
+    field = "instanceId"
+    type  = "spread"
   }
 }
