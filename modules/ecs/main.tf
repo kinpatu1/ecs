@@ -44,13 +44,9 @@ resource "aws_ecs_cluster" "foo" {
 resource "aws_ecs_service" "go" {
   iam_role                           = "ecsServiceRole"
   cluster                            = aws_ecs_cluster.foo.id
-  deployment_maximum_percent         = "100"
-  deployment_minimum_healthy_percent = "0"
   desired_count                      = "1"
-  health_check_grace_period_seconds  = "0"
   launch_type                        = "EC2"
   name                               = "miki"
-  scheduling_strategy                = "REPLICA"
   task_definition                    = "flow-taskdef"
 
   deployment_controller {
