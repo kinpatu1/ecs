@@ -1,7 +1,7 @@
 resource "aws_ecs_task_definition" "taskdef_service_go" {
   family                = var.task_definition_name
-  taskRoleArn = "arn:aws:iam::074708073377:role/ecsTaskExecutionRole"
-  executionRoleArn = "arn:aws:iam::074708073377:role/ecsTaskExecutionRole"
+  task_role_arn = "arn:aws:iam::074708073377:role/ecsTaskExecutionRole"
+  execution_role_arn = "arn:aws:iam::074708073377:role/ecsTaskExecutionRole"
   container_definitions = jsonencode(
 [
         {
