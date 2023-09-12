@@ -1,6 +1,6 @@
 module "rds" {
   ### Module Path
-  source = "../modules/rds"
+  source = "../../modules/rds"
 
   rds_name           = "${var.project}-rds"
   security_group_rds = "${var.project}-security_group-rds"
@@ -15,7 +15,7 @@ module "rds" {
 
 module "s3" {
   ### Module Path
-  source = "../modules/s3"
+  source = "../../modules/s3"
 
   s3_bucket_name = "${var.project}-s3-202301111"
 }
