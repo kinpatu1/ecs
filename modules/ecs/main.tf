@@ -18,11 +18,5 @@ resource "aws_ecs_task_definition" "taskdef_service_go" {
 
   requires_compatibilities = ["EC2"]
   network_mode = "bridge"
-
-  lifecycle {
-    ignore_changes = [
-      container_definitions
-    ]
-  }
 }
 
