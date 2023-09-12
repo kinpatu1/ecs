@@ -1,6 +1,6 @@
 module "vpc" {
   ### Module Path
-  source = "../modules/vpc"
+  source = "../../modules/vpc"
 
 
   cidr_vpc = "10.0.0.0/16"
@@ -21,7 +21,7 @@ module "vpc" {
 
 module "ec2" {
   ### Module Path
-  source = "../modules/ec2"
+  source = "../../modules/ec2"
 
   key_name           = "miki"
   ebs_name           = "${var.project}-ebs"
