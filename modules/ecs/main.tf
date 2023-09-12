@@ -52,14 +52,4 @@ resource "aws_ecs_service" "go" {
   deployment_controller {
     type = "ECS"
   }
-
-  ordered_placement_strategy {
-    field = "attribute:ecs.availability-zone"
-    type  = "spread"
-  }
-
-  ordered_placement_strategy {
-    field = "instanceId"
-    type  = "spread"
-  }
 }
