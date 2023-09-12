@@ -27,11 +27,6 @@ resource "aws_security_group" "gateway" {
   tags = {
     Name = var.security_group_ec2
   }
-
-  depends_on = [
-    aws_instance.gateway,
-  ]
-
   egress {
     from_port        = 0
     to_port          = 0
