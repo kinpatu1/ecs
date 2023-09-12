@@ -9,6 +9,7 @@ resource "aws_rds_cluster" "cluster" {
   availability_zones   = ["ap-northeast-1a", "ap-northeast-1c"]
   master_username      = var.master_username
   master_password      = var.master_password
+  database_name        = var.database_name
   deletion_protection  = false
   skip_final_snapshot  = true
   db_subnet_group_name = aws_db_subnet_group.public.name

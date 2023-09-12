@@ -7,4 +7,3 @@ variable "project" {
 }
 
 variable "master_password" {}
-variable "glue_password" {}

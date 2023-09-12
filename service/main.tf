@@ -39,28 +39,11 @@ module "rds" {
   security_group_rds = "${var.project}-security_group-rds"
   vpc_id             = module.vpc.project_vpc_id
   master_password    = var.master_password
+  database_name      = var.project
   master_username    = "admin"
   subnet_group       = "${var.project}-subnet_group"
   subnet_public-a_id = module.vpc.project_subnet_public_id_1
   subnet_public-c_id = module.vpc.project_subnet_public_id_2
-}
-
-module "glue" {
-  ### Module Path
-  source = "../modules/glue"
-
-  security_group_glue  = "${var.project}-security_group-glue"
-  vpc_id               = module.vpc.project_vpc_id
-  glue_database_name   = "${var.project}-database"
-  instance_endpoint    = module.rds.instance_endpoint
-  database             = "glue"
-  password             = var.glue_password
-  username             = "admin"
-  glue_connection_name = "${var.project}-connection"
-  subnet_id_for_glue   = module.vpc.project_subnet_public_id_1
-  path                 = "glue/acinfotokyo"
-  glue_crawler_name    = "${var.project}-crawler"
-  glue_role_name       = module.iam.role_name
 }
 
 module "s3" {
@@ -68,11 +51,4 @@ module "s3" {
   source = "../modules/s3"
 
   s3_bucket_name = "${var.project}-s3-202301111"
-}
-
-module "iam" {
-  ### Module Path
-  source = "../modules/iam"
-
-  iam_role = "${var.project}-role"
 }
