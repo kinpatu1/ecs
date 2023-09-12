@@ -30,3 +30,11 @@ resource "aws_ecs_task_definition" "taskdef" {
   requires_compatibilities = ["EC2"]
 }
 
+resource "aws_ecs_cluster" "foo" {
+  name = "white-hart"
+
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
+}
