@@ -47,6 +47,8 @@ resource "aws_autoscaling_group" "test" {
     value               = true
     propagate_at_launch = true
   }
+  min_size = "1"
+  max_size = "1"
 }
 
 resource "aws_ecs_capacity_provider" "test" {
