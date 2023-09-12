@@ -18,6 +18,10 @@ resource "aws_instance" "gateway" {
   tags = {
     Name = var.ec2_name
   }
+
+  depends_on = [
+    aws_security_group.gateway,
+  ]
 }
 
 resource "aws_security_group" "gateway" {
