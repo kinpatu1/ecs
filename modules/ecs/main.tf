@@ -1,3 +1,3 @@
 resource "aws_ecs_task_definition" "service" {
-  family = "miki"
+  family = var.task_definition_name
 }

@@ -26,3 +26,11 @@ module "ecr" {
 
   ecr_name = "${var.project}-ecr"
 }
+
+module "ecs" {
+  ### Module Path
+  source = "../../modules/ecs"
+
+  task_definition_name = "${var.project}-taskdef"
+}
+
