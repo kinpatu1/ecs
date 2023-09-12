@@ -6,7 +6,7 @@ resource "aws_ecs_task_definition" "taskdef_service_go" {
 [
         {
             "name": var.container_name,
-            "image": var.image,
+            "image": "${var.image}:latest",
             "essential": true,
             "memory": 200,
             "portMappings": [
