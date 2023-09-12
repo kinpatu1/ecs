@@ -32,5 +32,6 @@ module "ecs" {
   source = "../../modules/ecs"
 
   task_definition_name = "${var.project}-taskdef"
+  container_name = "${var.project}-container"
+  image = module.ecr.repository_url
 }
-

@@ -3,13 +3,13 @@ resource "aws_ecs_task_definition" "taskdef_service_go" {
   container_definitions = jsonencode(
 [
         {
-            "name": "miki_container_name",
-            "image": "httpd",
+            "name": var.container_name,
+            "image": var.image,
             "essential": true,
             "memory": 200,
             "portMappings": [
                 {
-                    "containerPort": 800,
+                    "containerPort": 80,
                     "protocol": "tcp"
                 }
             ]
@@ -17,6 +17,5 @@ resource "aws_ecs_task_definition" "taskdef_service_go" {
 ])
 
   requires_compatibilities = ["EC2"]
-  network_mode = "bridge"
 }
 
