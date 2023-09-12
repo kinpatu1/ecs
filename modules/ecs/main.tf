@@ -46,4 +46,5 @@ resource "aws_ecs_service" "bar" {
   cluster             = aws_ecs_cluster.foo.id
   task_definition     = aws_ecs_task_definition.taskdef.arn
   scheduling_strategy = "REPLICA"
+  desired_count       = "1"
 }
