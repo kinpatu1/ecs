@@ -3,7 +3,7 @@ variable "aws_secret_key" {}
 
 variable "project" {
   type    = string
-  default = "insert"
+  default = "flow"
 }
 
 variable "master_password" {}
