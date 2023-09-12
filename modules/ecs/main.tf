@@ -30,6 +30,8 @@ resource "aws_ecs_task_definition" "taskdef" {
   requires_compatibilities = ["EC2"]
 }
 
+### ここから命名きちんとする
+
 resource "aws_ecs_cluster" "foo" {
   name = "white-hart"
 
@@ -49,7 +51,7 @@ resource "aws_ecs_service" "go" {
   launch_type                        = "EC2"
   name                               = "miki"
   scheduling_strategy                = "REPLICA"
-  task_definition                    = "miki"
+  task_definition                    = "flow-taskdef"
 
   deployment_controller {
     type = "ECS"
