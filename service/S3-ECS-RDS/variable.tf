@@ -6,6 +6,10 @@ variable "project" {
   default = "flow"
 }
 
+variable "account" {
+  default = "074708073377"
+}
+
 variable "master_password" {}
 
 variable "vpc_id" {
