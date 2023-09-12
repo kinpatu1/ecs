@@ -19,9 +19,9 @@ resource "aws_ecs_task_definition" "taskdef" {
         "logConfiguration" : {
           "logDriver" : "awslogs",
           "options" : {
-            "awslogs-group" : "/ecs/var.project",
+            "awslogs-group" : "/ecs/${var.project}",
             "awslogs-region" : "ap-northeast-1",
-            "awslogs-stream-prefix" : "var.project"
+            "awslogs-stream-prefix" : "${var.project}"
           }
         }
       }
