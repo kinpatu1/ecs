@@ -7,6 +7,8 @@ variable "account" {}
 
 variable "master_password" {}
 
+variable "database_name" {}
+
 variable "vpc_id" {}
 
 variable "subnet_public-a_id" {}
