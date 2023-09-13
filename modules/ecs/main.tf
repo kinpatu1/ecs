@@ -30,10 +30,8 @@ resource "aws_ecs_task_definition" "taskdef" {
   requires_compatibilities = ["EC2"]
 }
 
-### ここから命名きちんとする
-
-resource "aws_ecs_cluster" "foo" {
-  name = "white-hart"
+resource "aws_ecs_cluster" "ecs_cluster" {
+  name = var.ecs_cluster_name
 
   setting {
     name  = "containerInsights"
@@ -42,8 +40,8 @@ resource "aws_ecs_cluster" "foo" {
 }
 
 resource "aws_ecs_service" "bar" {
-  name                = "bar"
-  cluster             = aws_ecs_cluster.foo.id
+  name                = var.ecs_service_name
+  cluster             = aws_ecs_cluster.ecs_cluster.id
   task_definition     = aws_ecs_task_definition.taskdef.arn
   scheduling_strategy = "REPLICA"
   desired_count       = "1"
@@ -52,3 +50,4 @@ resource "aws_ecs_service" "bar" {
     rollback = true
   }
 }
+

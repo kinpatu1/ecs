@@ -36,4 +36,6 @@ module "ecs" {
   image                = module.ecr.repository_url
   account              = var.account
   project              = var.project
+  ecs_cluster_name     = "${var.project}-cluster"
+  ecs_service_name     = "${var.project}-service"
 }
