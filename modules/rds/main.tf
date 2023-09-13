@@ -64,11 +64,11 @@ resource "aws_security_group" "rds" {
   }
 }
 
-resource "aws_db_subnet_group" "public" {
+resource "aws_db_subnet_group" "private" {
   description = var.subnet_group
   name        = var.subnet_group
   subnet_ids = [
-    var.subnet_public-a_id,
-    var.subnet_public-c_id
+    var.subnet_private-a_id,
+    var.subnet_private-c_id
   ]
 }
