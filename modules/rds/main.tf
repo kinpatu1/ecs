@@ -12,7 +12,7 @@ resource "aws_rds_cluster" "cluster" {
   database_name        = var.database_name
   deletion_protection  = false
   skip_final_snapshot  = true
-  db_subnet_group_name = aws_db_subnet_group.public.name
+  db_subnet_group_name = aws_db_subnet_group.private.name
   vpc_security_group_ids = [
     aws_security_group.rds.id
   ]
