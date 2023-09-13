@@ -16,6 +16,8 @@ resource "aws_rds_cluster" "cluster" {
   vpc_security_group_ids = [
     aws_security_group.rds.id
   ]
+
+  apply_immediately    = true
 }
 
 resource "aws_rds_cluster_instance" "instance" {
