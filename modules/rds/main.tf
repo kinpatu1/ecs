@@ -21,7 +21,7 @@ resource "aws_rds_cluster" "cluster" {
     ignore_changes = [
       availability_zones,
     ]
-
+  }
 }
 
 resource "aws_rds_cluster_instance" "instance" {
