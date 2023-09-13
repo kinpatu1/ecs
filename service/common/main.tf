@@ -2,7 +2,6 @@ module "vpc" {
   ### Module Path
   source = "../../modules/vpc"
 
-
   cidr_vpc = "10.0.0.0/16"
   cidr_public = [
     "10.0.1.0/24",
@@ -23,7 +22,7 @@ module "ec2" {
   ### Module Path
   source = "../../modules/ec2"
 
-  key_name           = "miki"
+  key_name           = var.key_name
   ebs_name           = "${var.project}-ebs"
   ec2_name           = "${var.project}-ec2"
   security_group_ec2 = "${var.project}-security_group-ec2"
