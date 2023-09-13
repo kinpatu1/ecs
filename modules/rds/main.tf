@@ -17,7 +17,11 @@ resource "aws_rds_cluster" "cluster" {
     aws_security_group.rds.id
   ]
 
-  apply_immediately    = true
+  lifecycle {
+    ignore_changes = [
+      availability_zones,
+    ]
+
 }
 
 resource "aws_rds_cluster_instance" "instance" {
