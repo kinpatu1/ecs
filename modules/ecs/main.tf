@@ -39,7 +39,7 @@ resource "aws_ecs_cluster" "ecs_cluster" {
   }
 }
 
-resource "aws_ecs_service" "bar" {
+resource "aws_ecs_service" "ecs_service" {
   name                = var.ecs_service_name
   cluster             = aws_ecs_cluster.ecs_cluster.id
   task_definition     = aws_ecs_task_definition.taskdef.arn
