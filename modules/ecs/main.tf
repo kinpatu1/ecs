@@ -76,5 +76,10 @@ resource "aws_ecs_service" "ecs_service" {
     enable   = true
     rollback = true
   }
+  capacity_provider_strategy {
+    base = "0"
+    capacity_provider = "flow-capacity_provider"
+    weight = "1"    
+  }
 }
 
