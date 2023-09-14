@@ -5,8 +5,8 @@ variable "security_group_ec2" {}
 variable "key_name" {}
 variable "account" {}
 variable "ecs_cluster_name" {}
-variable "subnet_private-a_id" {}
-variable "subnet_private-c_id" {}
+# variable "subnet_private-a_id" {}
+# variable "subnet_private-c_id" {}
 
 
 
