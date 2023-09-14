@@ -47,5 +47,5 @@ module "autoscaling" {
   launch_template_name = "${var.project}-launch_template"
   security_group_application = "${var.project}-security_group-application"
   vpc_id = var.vpc_id
-  security_group_ec2 = module.
+  security_group_ec2 = module.ec2.security_group-gateway_id
 }
