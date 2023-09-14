@@ -48,4 +48,6 @@ module "autoscaling" {
   security_group_application = "${var.project}-security_group-application"
   vpc_id = var.vpc_id
   security_group_ec2 = var.security_group_ec2
+  key_name = var.key_name
+  account = var.account
 }
