@@ -37,7 +37,7 @@ resource "aws_ecs_task_definition" "taskdef" {
 resource "aws_ecs_cluster" "ecs_cluster" {
   name = var.ecs_cluster_name
 
-  capacity_providers = ["aws_ecs_capacity_provider.capacity_provider.name"]
+  capacity_providers = ["var.capacity_provider_name"]
 
 
   setting {
