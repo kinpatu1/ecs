@@ -45,10 +45,14 @@ resource "aws_security_group" "application" {
   }
 
   ingress {
-    from_port       = 0
-    to_port         = 0
-    protocol        = "-1"
-    security_groups = ["${var.security_group_ec2}"]
+    cidr_blocks      = ["0.0.0.0/0"]
+    from_port        = "22"
+    ipv6_cidr_blocks = []
+    prefix_list_ids  = []
+    protocol         = "tcp"
+    security_groups  = []
+    self             = false
+    to_port          = "22"
   }
 }
 

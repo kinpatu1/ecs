@@ -16,7 +16,5 @@ variable "subnet_public-c_id" {}
 variable "subnet_private-a_id" {}
 variable "subnet_private-c_id" {}
 
-variable "security_group_ec2" {}
-
 variable "key_name" {}
 

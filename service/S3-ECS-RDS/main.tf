@@ -49,7 +49,6 @@ module "autoscaling" {
   launch_template_name       = "${var.project}-launch_template"
   security_group_application = "${var.project}-security_group-application"
   vpc_id                     = var.vpc_id
-  security_group_ec2         = var.security_group_ec2
   key_name                   = var.key_name
   account                    = var.account
   ecs_cluster_name           = module.ecs.ecs_cluster_name
