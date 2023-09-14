@@ -47,6 +47,7 @@ resource "aws_security_group" "application" {
 }
 
 resource "aws_autoscaling_group" "autoscaling_group" {
+  availability_zones = ["ap-northeast-1a","ap-northeast-1c"]
   max_size = "1"
   min_size = "1"
   launch_template {
