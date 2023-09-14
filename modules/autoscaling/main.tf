@@ -57,7 +57,7 @@ resource "aws_autoscaling_group" "autoscaling_group" {
   launch_template {
     id      = aws_launch_template.launch_template.id
     version = "$Latest"
-
+  }
   tag {
     key                 = "Name"
     value               = var.ecs_instance_name
