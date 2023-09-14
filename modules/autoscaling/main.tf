@@ -6,7 +6,6 @@ resource "aws_launch_template" "launch_template" {
   name                   = var.launch_template_name
   image_id               = "ami-0ae451dcc36be7bb3"
   instance_type          = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.application.id]
   key_name               = var.key_name
   iam_instance_profile {
     arn = "arn:aws:iam::${var.account}:instance-profile/ecsInstanceRole"
@@ -14,6 +13,7 @@ resource "aws_launch_template" "launch_template" {
 
   network_interfaces {
     associate_public_ip_address = true
+    security_groups = [aws_security_group.application.id]
   }
 
   user_data = base64encode(data.template_file.user_data.rendered)
