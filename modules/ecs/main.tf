@@ -37,7 +37,7 @@ resource "aws_ecs_task_definition" "taskdef" {
 resource "aws_ecs_cluster" "ecs_cluster" {
   name = var.ecs_cluster_name
 
-  capacity_providers = ["flow"]
+  capacity_providers = ["aws_ecs_capacity_provider.capacity_provider.name"]
 
 
   setting {
@@ -53,10 +53,10 @@ resource "aws_ecs_cluster" "ecs_cluster" {
 }
 
 resource "aws_ecs_capacity_provider" "capacity_provider" {
-  name = "flow"
+  name = var.capacity_provider_name
 
   auto_scaling_group_provider {
-    auto_scaling_group_arn         = "arn:aws:autoscaling:ap-northeast-1:074708073377:autoScalingGroup:5c9e959f-6942-4657-b07a-fd02f12ea9e0:autoScalingGroupName/flow-autoscaling_group"
+    auto_scaling_group_arn         = var.auto_scaling_group_arn
     managed_termination_protection = "DISABLED"
 
     managed_scaling {

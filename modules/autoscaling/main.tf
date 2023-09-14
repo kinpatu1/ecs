@@ -1,3 +1,7 @@
+output "autoscaling_arn" {
+  value = aws_autoscaling_group.autoscaling_group.arn
+}
+
 resource "aws_launch_template" "launch_template" {
   name                   = var.launch_template_name
   image_id               = "ami-0ae451dcc36be7bb3"
