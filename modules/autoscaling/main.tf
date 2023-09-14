@@ -16,7 +16,6 @@ resource "aws_launch_template" "launch_template" {
 data "template_file" "user_data" {
   template = file("${path.module}/userdata/application")
   vars = {
-    accountid = var.accountid
     ecs_cluster_name = var.ecs_cluster_name
   }
 }
