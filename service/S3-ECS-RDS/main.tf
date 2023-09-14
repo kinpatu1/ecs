@@ -54,4 +54,9 @@ module "autoscaling" {
   subnet_private-a_id        = var.subnet_private-a_id
   subnet_private-c_id        = var.subnet_private-c_id
   autoscaling_group_name = "${var.project}-autoscaling_group"
+  ecs_instance_name = "ECS Instance - ${var.project}"
 }
+
+
+
+
