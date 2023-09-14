@@ -6,8 +6,8 @@ variable "key_name" {}
 variable "account" {}
 variable "ecs_cluster_name" {}
 variable "autoscaling_group_name" {}
-variable "subnet_private-a_id" {}
-variable "subnet_private-c_id" {}
+variable "subnet_public-a_id" {}
+variable "subnet_public-c_id" {}
 variable "ecs_instance_name" {}
 
 
