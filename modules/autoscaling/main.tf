@@ -45,3 +45,12 @@ resource "aws_security_group" "application" {
     security_groups = ["${var.security_group_ec2}"]
   }
 }
+
+resource "aws_autoscaling_group" "autoscaling_group" {
+  max_size = "1"
+  min_size = "1"
+  launch_template {
+    id      = aws_launch_template.launch_template.id
+    version = "$Latest"
+  }
+}
