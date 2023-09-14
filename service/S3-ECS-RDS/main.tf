@@ -39,3 +39,10 @@ module "ecs" {
   ecs_cluster_name     = "${var.project}-cluster"
   ecs_service_name     = "${var.project}-service"
 }
+
+module "autoscaling" {
+  ### Module Path
+  source = "../../modules/autoscaling"
+
+  launch_template_name = "${var.project}-launch_template"
+}
