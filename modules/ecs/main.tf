@@ -49,6 +49,12 @@ resource "aws_ecs_cluster" "ecs_cluster" {
   }
 }
 
+resource "aws_ecs_cluster_capacity_providers" "capacity_providers" {
+  cluster_name = aws_ecs_cluster.ecs_cluster.name
+
+
+}
+
 resource "aws_ecs_service" "ecs_service" {
   name                = var.ecs_service_name
   cluster             = aws_ecs_cluster.ecs_cluster.id
