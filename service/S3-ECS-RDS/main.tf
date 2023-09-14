@@ -53,4 +53,5 @@ module "autoscaling" {
   ecs_cluster_name           = module.ecs.ecs_cluster_name
   subnet_private-a_id        = var.subnet_private-a_id
   subnet_private-c_id        = var.subnet_private-c_id
+  autoscaling_group_name = "${var.project}-autoscaling_group"
 }
