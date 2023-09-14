@@ -14,3 +14,5 @@ variable "vpc_id" {}
 variable "subnet_private-a_id" {}
 
 variable "subnet_private-c_id" {}
+
+variable "security_group_ec2" {}

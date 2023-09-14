@@ -1,7 +1,3 @@
-output "security_group-gateway_id" {
-  value = aws_security_group.gateway.id
-}
-
 resource "aws_instance" "gateway" {
   subnet_id                   = var.subnet_id
   ami                         = "ami-07d6bd9a28134d3b3"
