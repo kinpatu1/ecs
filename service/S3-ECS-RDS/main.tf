@@ -50,4 +50,5 @@ module "autoscaling" {
   security_group_ec2 = var.security_group_ec2
   key_name = var.key_name
   account = var.account
+  ecs_cluster_name = module.ecs.ecs_cluster_id
 }

@@ -1,3 +1,7 @@
+output "ecs_cluster_id" {
+  value = aws_ecs_cluster.ecs_cluster.id
+}
+
 resource "aws_ecs_task_definition" "taskdef" {
   family             = var.task_definition_name
   task_role_arn      = "arn:aws:iam::${var.account}:role/ecsTaskExecutionRole"

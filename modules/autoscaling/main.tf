@@ -10,6 +10,11 @@ resource "aws_launch_template" "launch_template" {
   iam_instance_profile {
     name = "arn:aws:iam::${var.account}:instance-profile/ecsInstanceRole"
   }
+  user_data      = data.template_file.user_data.rendered
+}
+
+data "template_file" "user_data" {
+  template = file("${path.module}/userdata/application")
 }
 
 resource "aws_security_group" "application" {
