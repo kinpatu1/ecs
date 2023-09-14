@@ -7,6 +7,11 @@ resource "aws_launch_template" "launch_template" {
   iam_instance_profile {
     arn = "arn:aws:iam::${var.account}:instance-profile/ecsInstanceRole"
   }
+
+  network_interfaces {
+    associate_public_ip_address = true
+  }
+  
   user_data = base64encode(data.template_file.user_data.rendered)
 }
 
