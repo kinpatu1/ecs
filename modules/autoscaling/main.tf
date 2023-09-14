@@ -47,8 +47,8 @@ resource "aws_security_group" "application" {
 }
 
 resource "aws_launch_template" "autoscaling_group" {
-  max_size = "1"
-  min_size = "1"
+  max_size = 1
+  min_size = 1
   launch_template {
     id      = aws_launch_template.launch_template.id
     version = "$Latest"
