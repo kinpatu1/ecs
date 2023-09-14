@@ -37,6 +37,9 @@ resource "aws_ecs_task_definition" "taskdef" {
 resource "aws_ecs_cluster" "ecs_cluster" {
   name = var.ecs_cluster_name
 
+  capacity_providers = ["flow"]
+
+
   setting {
     name  = "containerInsights"
     value = "enabled"
