@@ -4,9 +4,6 @@ resource "aws_launch_template" "launch_template" {
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.application.id]
   key_name               = var.key_name
-  network_interfaces {
-    associate_public_ip_address = true
-  }
   iam_instance_profile {
     name = "arn:aws:iam::${var.account}:instance-profile/ecsInstanceRole"
   }
