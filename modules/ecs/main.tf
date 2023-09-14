@@ -1,5 +1,5 @@
 output "ecs_cluster_id" {
-  value = aws_ecs_cluster.ecs_cluster.id
+  value = aws_ecs_cluster.ecs_cluster.name
 }
 
 resource "aws_ecs_task_definition" "taskdef" {
