@@ -47,7 +47,6 @@ resource "aws_security_group" "application" {
 }
 
 resource "aws_autoscaling_group" "autoscaling_group" {
-  availability_zones = ["ap-northeast-1a","ap-northeast-1c"]
   vpc_zone_identifier = [var.subnet_private-a_id, var.subnet_private-c_id]
   max_size = "1"
   min_size = "1"
