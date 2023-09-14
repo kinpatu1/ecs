@@ -2,7 +2,7 @@ resource "aws_launch_template" "launch_template" {
   name                   = var.launch_template_name
   image_id               = "ami-0ae451dcc36be7bb3"
   instance_type          = "t2.micro"
-  security_group_names  = [aws_security_group.application.name]
+  security_groups = [aws_security_group.application.id]
   key_name               = var.key_name
   network_interfaces {
     associate_public_ip_address = true

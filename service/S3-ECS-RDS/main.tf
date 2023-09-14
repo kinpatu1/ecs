@@ -51,6 +51,6 @@ module "autoscaling" {
   key_name                   = var.key_name
   account                    = var.account
   ecs_cluster_name           = module.ecs.ecs_cluster_name
-  subnet_private-a_id = var.subnet_private-a_id
-  subnet_private-c_id = var.subnet_private-c_id
+  subnet_private-a_id        = var.subnet_private-a_id
+  subnet_private-c_id        = var.subnet_private-c_id
 }
