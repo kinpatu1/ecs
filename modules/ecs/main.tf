@@ -49,10 +49,13 @@ resource "aws_ecs_cluster" "ecs_cluster" {
   }
 }
 
-resource "aws_ecs_cluster_capacity_providers" "capacity_providers" {
-  cluster_name = aws_ecs_cluster.ecs_cluster.name
+resource "aws_ecs_capacity_provider" "capacity_provider" {
+  name = "miki"
 
-
+  auto_scaling_group_provider {
+    auto_scaling_group_arn         = "arn:aws:autoscaling:ap-northeast-1:074708073377:autoScalingGroup:5c9e959f-6942-4657-b07a-fd02f12ea9e0:autoScalingGroupName/flow-autoscaling_group"
+    managed_termination_protection = "DISABLED"
+  }
 }
 
 resource "aws_ecs_service" "ecs_service" {
