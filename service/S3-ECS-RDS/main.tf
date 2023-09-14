@@ -17,7 +17,7 @@ module "s3" {
   ### Module Path
   source = "../../modules/s3"
 
-  s3_bucket_name = "${var.project}-s3"
+  s3_bucket_name = "${var.project}-s3-20230914"
 }
 
 module "ecr" {
