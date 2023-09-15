@@ -19,7 +19,7 @@ output "subnet_private_id_2" {
 }
 
 ####################
-vpc 
+#vpc 
 ####################
 resource "aws_vpc" "vpc" {
   cidr_block = var.cidr_vpc
@@ -36,7 +36,7 @@ resource "aws_internet_gateway" "igw" {
 }
 
 ####################
- public_subnet
+#public_subnet
 ####################
 
 resource "aws_subnet" "subnet_public" {
@@ -69,7 +69,7 @@ resource "aws_route_table_association" "tableassociation_public" {
 }
 
 ####################
- private_subnet
+#private_subnet
 ####################
 
 resource "aws_subnet" "subnet_private" {
@@ -97,7 +97,7 @@ resource "aws_route_table_association" "tableassociation_private" {
 }
 
 ####################
- s3_endpoint
+#s3_endpoint
 ####################
 
 resource "aws_vpc_endpoint" "s3_endpoint" {
