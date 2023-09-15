@@ -50,10 +50,6 @@ resource "aws_ecs_cluster" "ecs_cluster" {
       setting
     ]
   }
-
-  depends_on = [
-    aws_ecs_task_definition.taskdef,
-  ]
 }
 
 resource "aws_ecs_capacity_provider" "capacity_provider" {
