@@ -121,3 +121,8 @@ resource "aws_vpc_endpoint" "s3_endpoint" {
     Name = var.s3endpoint_name
   }
 }
+
+resource "aws_vpc_endpoint_route_table_association" "public_s3" {
+  route_table_id  = aws_route_table.public_table.id
+  vpc_endpoint_id = aws_vpc_endpoint.s3_endpoint.id
+}
