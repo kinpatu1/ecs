@@ -26,6 +26,6 @@ module "ec2" {
   ebs_name           = "${var.project}-ebs"
   ec2_name           = "${var.project}-ec2-gateway"
   security_group_ec2 = "${var.project}-security_group-gateway"
-  vpc_id             = module.vpc.project_vpc_id
-  subnet_id          = module.vpc.project_subnet_public_id_1
+  vpc_id             = module.vpc.vpc_id
+  subnet_id          = module.vpc.subnet_public_id_1
 }
