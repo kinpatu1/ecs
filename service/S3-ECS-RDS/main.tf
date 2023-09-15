@@ -27,20 +27,6 @@ module "ecr" {
   ecr_name = "${var.project}-ecr"
 }
 
-module "ecs" {
-  ### Module Path
-  source = "../../modules/ecs"
-
-  task_definition_name = "${var.project}-taskdef"
-  container_name       = "${var.project}-container"
-  image                = module.ecr.repository_url
-  account              = var.account
-  project              = var.project
-  ecs_cluster_name     = "${var.project}-cluster"
-  ecs_service_name     = "${var.project}-service"
-  capacity_provider_name = "${var.project}-capacity_provider"
-  auto_scaling_group_arn = module.autoscaling.autoscaling_arn
-}
 
 module "autoscaling" {
   ### Module Path

@@ -81,5 +81,9 @@ resource "aws_ecs_service" "ecs_service" {
     capacity_provider = "flow-capacity_provider"
     weight = "1"    
   }
+
+  depends_on = [
+    aws_ecs_cluster.ecs_cluster,
+  ]
 }
 
