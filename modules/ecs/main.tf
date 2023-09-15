@@ -72,10 +72,6 @@ resource "aws_ecs_service" "ecs_service" {
   task_definition     = aws_ecs_task_definition.taskdef.arn
   scheduling_strategy = "REPLICA"
   desired_count       = "1"
-  deployment_circuit_breaker {
-    enable   = true
-    rollback = true
-  }
   capacity_provider_strategy {
     base              = "0"
     capacity_provider = var.capacity_provider_name
