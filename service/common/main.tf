@@ -35,4 +35,5 @@ module "iam" {
   source = "../../modules/iam"
 
   role_name_ecs_taskdef = "${var.project}-taskdef_role"
+  policy_name_ecs_taskdef = "${var.project}-taskdef_policy"
 }
