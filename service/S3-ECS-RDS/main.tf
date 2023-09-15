@@ -31,13 +31,13 @@ module "ecs" {
   ### Module Path
   source = "../../modules/ecs"
 
-  task_definition_name = "${var.project}-taskdef"
-  container_name       = "${var.project}-container"
-  image                = module.ecr.repository_url
-  account              = var.account
-  project              = var.project
-  ecs_cluster_name     = "${var.project}-cluster"
-  ecs_service_name     = "${var.project}-service"
+  task_definition_name   = "${var.project}-taskdef"
+  container_name         = "${var.project}-container"
+  image                  = module.ecr.repository_url
+  account                = var.account
+  project                = var.project
+  ecs_cluster_name       = "${var.project}-cluster"
+  ecs_service_name       = "${var.project}-service"
   capacity_provider_name = "${var.project}-capacity_provider"
   auto_scaling_group_arn = module.autoscaling.autoscaling_arn
 }
@@ -52,10 +52,10 @@ module "autoscaling" {
   key_name                   = var.key_name
   account                    = var.account
   ecs_cluster_name           = module.ecs.ecs_cluster_name
-  public_subnet-a_id        = var.public_subnet-a_id
-  public_subnet-c_id        = var.public_subnet-c_id
-  autoscaling_group_name = "${var.project}-autoscaling_group"
-  ecs_instance_name = "ECS Instance - ${var.project}"
+  public_subnet-a_id         = var.public_subnet-a_id
+  public_subnet-c_id         = var.public_subnet-c_id
+  autoscaling_group_name     = "${var.project}-autoscaling_group"
+  ecs_instance_name          = "ECS Instance - ${var.project}"
 }
 
 

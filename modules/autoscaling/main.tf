@@ -3,17 +3,17 @@ output "autoscaling_arn" {
 }
 
 resource "aws_launch_template" "launch_template" {
-  name                   = var.launch_template_name
-  image_id               = "ami-0ae451dcc36be7bb3"
-  instance_type          = "t2.micro"
-  key_name               = var.key_name
+  name          = var.launch_template_name
+  image_id      = "ami-0ae451dcc36be7bb3"
+  instance_type = "t2.micro"
+  key_name      = var.key_name
   iam_instance_profile {
     arn = "arn:aws:iam::${var.account}:instance-profile/ecsInstanceRole"
   }
 
   network_interfaces {
     associate_public_ip_address = true
-    security_groups = [aws_security_group.application.id]
+    security_groups             = [aws_security_group.application.id]
   }
 
   user_data = base64encode(data.template_file.user_data.rendered)
@@ -57,10 +57,10 @@ resource "aws_security_group" "application" {
 }
 
 resource "aws_autoscaling_group" "autoscaling_group" {
-  name = var.autoscaling_group_name
+  name                = var.autoscaling_group_name
   vpc_zone_identifier = [var.public_subnet-a_id, var.public_subnet-c_id]
-  max_size = "1"
-  min_size = "1"
+  max_size            = "1"
+  min_size            = "1"
   launch_template {
     id      = aws_launch_template.launch_template.id
     version = "$Latest"

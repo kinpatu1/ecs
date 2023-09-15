@@ -60,8 +60,8 @@ resource "aws_ecs_capacity_provider" "capacity_provider" {
     managed_termination_protection = "DISABLED"
 
     managed_scaling {
-      status                    = "ENABLED"
-      target_capacity           = 100
+      status          = "ENABLED"
+      target_capacity = 100
     }
   }
 }
@@ -77,9 +77,9 @@ resource "aws_ecs_service" "ecs_service" {
     rollback = true
   }
   capacity_provider_strategy {
-    base = "0"
+    base              = "0"
     capacity_provider = "flow-capacity_provider"
-    weight = "1"    
+    weight            = "1"
   }
 }
 
