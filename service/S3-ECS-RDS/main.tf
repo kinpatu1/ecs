@@ -9,8 +9,8 @@ module "rds" {
   database_name       = var.database_name
   master_username     = "admin"
   subnet_group        = "${var.project}-subnet_group"
-  subnet_private-a_id = var.subnet_private-a_id
-  subnet_private-c_id = var.subnet_private-c_id
+  private_subnet-a_id = var.private_subnet-a_id
+  private_subnet-c_id = var.private_subnet-c_id
 }
 
 module "s3" {
@@ -52,8 +52,8 @@ module "autoscaling" {
   key_name                   = var.key_name
   account                    = var.account
   ecs_cluster_name           = module.ecs.ecs_cluster_name
-  subnet_public-a_id        = var.subnet_public-a_id
-  subnet_public-c_id        = var.subnet_public-c_id
+  public_subnet-a_id        = var.public_subnet-a_id
+  public_subnet-c_id        = var.public_subnet-c_id
   autoscaling_group_name = "${var.project}-autoscaling_group"
   ecs_instance_name = "ECS Instance - ${var.project}"
 }

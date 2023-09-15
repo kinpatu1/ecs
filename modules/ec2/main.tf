@@ -1,6 +1,10 @@
+####################
+#ec2
+####################
+
 resource "aws_instance" "gateway" {
   subnet_id                   = var.subnet_id
-  ami                         = "ami-07d6bd9a28134d3b3"
+  ami                         = "ami-0f89bdd365c3d966d"
   associate_public_ip_address = true
   instance_type               = "t2.micro"
   key_name                    = var.key_name
@@ -21,11 +25,11 @@ resource "aws_instance" "gateway" {
 }
 
 resource "aws_security_group" "gateway" {
-  description = var.security_group_ec2
+  description = var.security_group_gateway
   vpc_id      = var.vpc_id
-  name        = var.security_group_ec2
+  name        = var.security_group_gateway
   tags = {
-    Name = var.security_group_ec2
+    Name = var.security_group_gateway
   }
   egress {
     from_port        = 0

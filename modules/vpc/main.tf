@@ -2,25 +2,26 @@ output "vpc_id" {
   value = aws_vpc.vpc.id
 }
 
-output "subnet_public_id_1" {
-  value = element(aws_subnet.subnet_public.*.id, 1)
+output "public_subnet_id_1" {
+  value = element(aws_subnet.public_subnet.*.id, 1)
 }
 
-output "subnet_public_id_2" {
-  value = element(aws_subnet.subnet_public.*.id, 2)
+output "public_subnet_id_2" {
+  value = element(aws_subnet.public_subnet.*.id, 2)
 }
 
-output "subnet_private_id_1" {
-  value = element(aws_subnet.subnet_private.*.id, 1)
+output "private_subnet_id_1" {
+  value = element(aws_subnet.private_subnet.*.id, 1)
 }
 
-output "subnet_private_id_2" {
-  value = element(aws_subnet.subnet_private.*.id, 2)
+output "private_subnet_id_2" {
+  value = element(aws_subnet.private_subnet.*.id, 2)
 }
 
 ####################
 #vpc 
 ####################
+
 resource "aws_vpc" "vpc" {
   cidr_block = var.cidr_vpc
   tags = {
@@ -39,7 +40,7 @@ resource "aws_internet_gateway" "igw" {
 #public_subnet
 ####################
 
-resource "aws_subnet" "subnet_public" {
+resource "aws_subnet" "public_subnet" {
   count             = length(var.cidr_public)
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = element(var.cidr_public, count.index)
@@ -64,7 +65,7 @@ resource "aws_route_table" "public_table" {
 
 resource "aws_route_table_association" "tableassociation_public" {
   count          = length(var.cidr_public)
-  subnet_id      = element(aws_subnet.subnet_public.*.id, count.index)
+  subnet_id      = element(aws_subnet.public_subnet.*.id, count.index)
   route_table_id = aws_route_table.public_table.id
 }
 
@@ -72,7 +73,7 @@ resource "aws_route_table_association" "tableassociation_public" {
 #private_subnet
 ####################
 
-resource "aws_subnet" "subnet_private" {
+resource "aws_subnet" "private_subnet" {
   count             = length(var.cidr_private)
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = element(var.cidr_private, count.index)
@@ -92,7 +93,7 @@ resource "aws_route_table" "private_table" {
 
 resource "aws_route_table_association" "tableassociation_private" {
   count          = length(var.cidr_private)
-  subnet_id      = element(aws_subnet.subnet_private.*.id, count.index)
+  subnet_id      = element(aws_subnet.private_subnet.*.id, count.index)
   route_table_id = aws_route_table.private_table.id
 }
 
@@ -122,7 +123,7 @@ resource "aws_vpc_endpoint" "s3_endpoint" {
   }
 }
 
-resource "aws_vpc_endpoint_route_table_association" "public_s3" {
+resource "aws_vpc_endpoint_route_table_association" "tableassociation_s3" {
   route_table_id  = aws_route_table.public_table.id
   vpc_endpoint_id = aws_vpc_endpoint.s3_endpoint.id
 }
