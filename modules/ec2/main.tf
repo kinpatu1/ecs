@@ -1,7 +1,3 @@
-####################
-#ec2
-####################
-
 resource "aws_instance" "gateway" {
   subnet_id                   = var.subnet_id
   ami                         = "ami-0f89bdd365c3d966d"

@@ -78,7 +78,7 @@ resource "aws_ecs_service" "ecs_service" {
   }
   capacity_provider_strategy {
     base              = "0"
-    capacity_provider = "flow-capacity_provider"
+    capacity_provider = var.capacity_provider_name
     weight            = "1"
   }
 }

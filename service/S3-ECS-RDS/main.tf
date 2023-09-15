@@ -8,16 +8,9 @@ module "rds" {
   master_password     = var.master_password
   database_name       = var.database_name
   master_username     = "admin"
-  subnet_group        = "${var.project}-subnet_group"
+  subnet_group        = "${var.project}-subnet_group_private"
   private_subnet-a_id = var.private_subnet-a_id
   private_subnet-c_id = var.private_subnet-c_id
-}
-
-module "s3" {
-  ### Module Path
-  source = "../../modules/s3"
-
-  s3_bucket_name = "${var.project}-s3-20230914"
 }
 
 module "ecr" {
