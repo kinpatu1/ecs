@@ -26,25 +26,3 @@ module "ecr" {
 
   ecr_name = "${var.project}-ecr"
 }
-
-
-
-module "autoscaling" {
-  ### Module Path
-  source = "../../modules/autoscaling"
-
-  launch_template_name       = "${var.project}-launch_template"
-  security_group_application = "${var.project}-security_group-application"
-  vpc_id                     = var.vpc_id
-  key_name                   = var.key_name
-  account                    = var.account
-  ecs_cluster_name           = miki
-  subnet_public-a_id        = var.subnet_public-a_id
-  subnet_public-c_id        = var.subnet_public-c_id
-  autoscaling_group_name = "${var.project}-autoscaling_group"
-  ecs_instance_name = "ECS Instance - ${var.project}"
-}
-
-
-
-
