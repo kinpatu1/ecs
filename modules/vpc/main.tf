@@ -18,6 +18,9 @@ output "subnet_private_id_2" {
   value = element(aws_subnet.subnet_private.*.id, 2)
 }
 
+####################
+vpc 
+####################
 resource "aws_vpc" "vpc" {
   cidr_block = var.cidr_vpc
   tags = {
@@ -31,6 +34,10 @@ resource "aws_internet_gateway" "igw" {
     Name = var.igw_name
   }
 }
+
+####################
+public_subnet
+####################
 
 resource "aws_subnet" "subnet_public" {
   count             = length(var.cidr_public)
@@ -61,10 +68,9 @@ resource "aws_route_table_association" "tableassociation_public" {
   route_table_id = aws_route_table.public_table.id
 }
 
-resource "aws_vpc_endpoint_route_table_association" "public_s3" {
-  route_table_id  = aws_route_table.public_table.id
-  vpc_endpoint_id = aws_vpc_endpoint.s3_endpoint.id
-}
+####################
+private_subnet
+####################
 
 resource "aws_subnet" "subnet_private" {
   count             = length(var.cidr_private)
@@ -89,6 +95,10 @@ resource "aws_route_table_association" "tableassociation_private" {
   subnet_id      = element(aws_subnet.subnet_private.*.id, count.index)
   route_table_id = aws_route_table.private_table.id
 }
+
+####################
+s3_endpoint
+####################
 
 resource "aws_vpc_endpoint" "s3_endpoint" {
   vpc_id       = aws_vpc.vpc.id
