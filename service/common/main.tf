@@ -34,5 +34,5 @@ module "iam" {
   ### Module Path
   source = "../../modules/iam"
 
-  role_name_ecs_taskdef = "${var.project}-taskdef"
+  role_name_ecs_taskdef = "${var.project}-taskdef_role"
 }
