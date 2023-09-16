@@ -68,7 +68,7 @@ resource "aws_db_subnet_group" "private" {
   description = var.subnet_group
   name        = var.subnet_group
   subnet_ids = [
-    var.private_subnet-a_id,
-    var.private_subnet-c_id
+    var.private_subnet_id_rds1,
+    var.private_subnet_id_rds2
   ]
 }

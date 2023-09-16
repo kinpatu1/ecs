@@ -9,8 +9,8 @@ module "rds" {
   database_name       = var.database_name
   master_username     = "admin"
   subnet_group        = "${var.project}-subnet_group_private"
-  private_subnet-a_id = var.private_subnet-a_id
-  private_subnet-c_id = var.private_subnet-c_id
+  private_subnet_id_rds1 = var.private_subnet_id_rds1
+  private_subnet_id_rds2 = var.private_subnet_id_rds2
 }
 
 module "ecr" {

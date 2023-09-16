@@ -5,5 +5,5 @@ variable "master_password" {}
 variable "master_username" {}
 variable "database_name" {}
 variable "subnet_group" {}
-variable "private_subnet-a_id" {}
-variable "private_subnet-c_id" {}
+variable "private_subnet_id_rds1" {}
+variable "private_subnet_id_rds2" {}
