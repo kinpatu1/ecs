@@ -39,6 +39,7 @@ resource "aws_iam_role_policy" "taskdef_policy" {
         Action = [
           "s3:GetObject",
           "s3:PutObject",
+          "s3:ListBucket",
           "logs:CreateLogStream",
           "logs:CreateLogGroup",
           "logs:PutLogEvents"
