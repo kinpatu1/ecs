@@ -58,7 +58,7 @@ resource "aws_security_group" "application" {
 
 resource "aws_autoscaling_group" "autoscaling_group" {
   name                = var.autoscaling_group_name
-  vpc_zone_identifier = [var.public_subnet-a_id, var.public_subnet-c_id]
+  vpc_zone_identifier = [var.private_subnet-a_id, var.private_subnet-c_id]
   max_size            = "1"
   min_size            = "1"
   launch_template {
