@@ -9,7 +9,9 @@ module "vpc" {
   ]
   cidr_private = [
     "10.0.10.0/24",
-    "10.0.20.0/24"
+    "10.0.20.0/24",
+    "10.0.100.0/24",
+    "10.0.200.0/24"
   ]
   route_table_name = "${var.project}-rtb"
   subnet_name      = "${var.project}-subnet"
