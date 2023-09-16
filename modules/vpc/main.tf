@@ -112,7 +112,7 @@ resource "aws_route_table" "private_table_ecs" {
 resource "aws_route_table_association" "tableassociation_private" {
   count          = length(var.cidr_private)
   subnet_id      = element(aws_subnet.private_subnet.*.id, count.index)
-  route_table_id = aws_route_table.private_table.id
+  route_table_id = aws_route_table.private_table_ecs.id
 }
 
 resource "aws_route_table" "private_table_rds" {
@@ -121,6 +121,12 @@ resource "aws_route_table" "private_table_rds" {
   tags = {
     Name = "${var.route_table_name}-private"
   }
+}
+
+resource "aws_route_table_association" "tableassociation_private" {
+  count          = length(var.cidr_private)
+  subnet_id      = element(aws_subnet.private_subnet.*.id, count.index)
+  route_table_id = aws_route_table.private_table_rds.id
 }
 
 ####################
