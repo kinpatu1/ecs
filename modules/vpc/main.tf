@@ -96,7 +96,7 @@ resource "aws_subnet" "private_subnet" {
   }
 }
 
-resource "aws_route_table" "private_table" {
+resource "aws_route_table" "private_table_ecs" {
   vpc_id = aws_vpc.vpc.id
 
   route {
@@ -113,6 +113,14 @@ resource "aws_route_table_association" "tableassociation_private" {
   count          = length(var.cidr_private)
   subnet_id      = element(aws_subnet.private_subnet.*.id, count.index)
   route_table_id = aws_route_table.private_table.id
+}
+
+resource "aws_route_table" "private_table_rds" {
+  vpc_id = aws_vpc.vpc.id
+
+  tags = {
+    Name = "${var.route_table_name}-private"
+  }
 }
 
 ####################
