@@ -109,7 +109,7 @@ resource "aws_route_table" "private_table_ecs" {
   }
 }
 
-resource "aws_route_table_association" "tableassociation_private" {
+resource "aws_route_table_association" "tableassociation_private_ecs" {
   count          = length(var.cidr_private)
   subnet_id      = element(aws_subnet.private_subnet.*.id, count.index)
   route_table_id = aws_route_table.private_table_ecs.id
@@ -123,7 +123,7 @@ resource "aws_route_table" "private_table_rds" {
   }
 }
 
-resource "aws_route_table_association" "tableassociation_private" {
+resource "aws_route_table_association" "tableassociation_private_rds" {
   count          = length(var.cidr_private)
   subnet_id      = element(aws_subnet.private_subnet.*.id, count.index)
   route_table_id = aws_route_table.private_table_rds.id
