@@ -24,7 +24,7 @@ variable "private_subnet-c_id" {}
 variable "key_name" {}
 
 ####################
-#autoscaling
+#ecs
 ####################
 
 variable "taskdef_arn" {}
