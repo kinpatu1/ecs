@@ -25,7 +25,6 @@ module "vpc" {
   eip_name         = "${var.project}-eip_nat_gateway"
 }
 
-
 module "ec2" {
   ### Module Path
   source = "../../modules/ec2"
