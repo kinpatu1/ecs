@@ -52,6 +52,13 @@ module "autoscaling" {
   ecs_instance_name          = "ECS Instance - ${var.project}"
 }
 
+module "natgateway" {
+  ### Module Path
+  source = "../../modules/natgateway"
 
+  public_subnet_id = var.public_subnet-a_id
+  nat_gateway_name = "${var.project}-nat_gateway"
+  eip_name = "${var.project}-eip_nat_gateway"
+}
 
 
