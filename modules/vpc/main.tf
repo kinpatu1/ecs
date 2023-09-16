@@ -36,6 +36,23 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
+resource "aws_nat_gateway" "nat_gateway" {
+  allocation_id = aws_eip.nat_gateway.id
+  subnet_id     = var.public_subnet_id
+
+  tags = {
+    Name = var.nat_gateway_name
+  }
+}
+
+resource "aws_eip" "nat_gateway" {
+  vpc = true
+
+  tags {
+    Name = var.eip_name
+  }
+}
+
 ####################
 #public_subnet
 ####################
@@ -85,6 +102,11 @@ resource "aws_subnet" "private_subnet" {
 
 resource "aws_route_table" "private_table" {
   vpc_id = aws_vpc.vpc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_nat_gateway.nat_gateway.id
+  }
 
   tags = {
     Name = "${var.route_table_name}-private"
