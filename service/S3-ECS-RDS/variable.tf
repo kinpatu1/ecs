@@ -29,3 +29,4 @@ variable "private_subnet_id_ecs2" {}
 #ecs
 ####################
 
+variable "role_arn_for_taskdef" {}
