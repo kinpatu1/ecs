@@ -1,4 +1,4 @@
-output "role_for_taskdef_arn" {
+output "role_arn_for_taskdef" {
   value = aws_iam_role.ecs_taskdef.arn
 }
 

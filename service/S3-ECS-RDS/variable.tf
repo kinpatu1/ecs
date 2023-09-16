@@ -27,4 +27,4 @@ variable "key_name" {}
 #ecs
 ####################
 
-variable "role_for_taskdef_arn" {}
+variable "role_arn_for_taskdef" {}
