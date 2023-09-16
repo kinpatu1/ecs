@@ -100,7 +100,7 @@ resource "aws_subnet" "private_subnet_ecs" {
   cidr_block        = element(var.cidr_private_ecs, count.index)
   availability_zone = var.availability_zones[count.index]
   tags = {
-    Name = "${var.subnet_name}-private_ecs-${count.index + 1}"
+    Name = "${var.subnet_name}-private-${count.index + 1}"
   }
 }
 
@@ -129,7 +129,7 @@ resource "aws_subnet" "private_subnet_rds" {
   cidr_block        = element(var.cidr_private_rds, count.index)
   availability_zone = var.availability_zones[count.index]
   tags = {
-    Name = "${var.subnet_name}-private_rds-${count.index + 1}"
+    Name = "${var.subnet_name}-private-${count.index + 1}"
   }
 }
 
