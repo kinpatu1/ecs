@@ -22,6 +22,8 @@ variable "vpc_id" {}
 ####################
 
 variable "key_name" {}
+variable "private_subnet_id_ecs1" {}
+variable "private_subnet_id_ecs2" {}
 
 ####################
 #ecs
