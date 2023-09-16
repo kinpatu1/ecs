@@ -28,7 +28,7 @@ resource "aws_iam_role" "ecs_taskdef" {
   }
 }
 
-resource "aws_iam_role_policy" "test_policy" {
+resource "aws_iam_role_policy" "taskdef_policy" {
   name = var.policy_name_ecs_taskdef
   role = aws_iam_role.ecs_taskdef.id
 
@@ -38,7 +38,10 @@ resource "aws_iam_role_policy" "test_policy" {
       {
         Action = [
           "s3:GetObject",
-          "s3:PutObject"
+          "s3:PutObject",
+          "logs:CreateLogStream",
+          "logs:CreateLogGroup",
+          "logs:PutLogEvents"
         ]
         Effect   = "Allow"
         Resource = "*"
