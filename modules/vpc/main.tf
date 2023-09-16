@@ -113,7 +113,7 @@ resource "aws_route_table" "private_table_ecs" {
   }
 
   tags = {
-    Name = "${var.route_table_name}-private"
+    Name = "${var.route_table_name}-private_ecs"
   }
 }
 
@@ -137,7 +137,7 @@ resource "aws_route_table" "private_table_rds" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "${var.route_table_name}-private"
+    Name = "${var.route_table_name}-private_rds"
   }
 }
 
