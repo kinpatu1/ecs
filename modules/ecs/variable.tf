@@ -7,7 +7,7 @@ variable "ecs_cluster_name" {}
 variable "ecs_service_name" {}
 variable "capacity_provider_name" {}
 variable "auto_scaling_group_arn" {}
-variable "taskdef_arn" {}
+variable "role_for_taskdef_arn" {}
 
 
 

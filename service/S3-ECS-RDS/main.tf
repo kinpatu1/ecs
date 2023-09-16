@@ -24,7 +24,7 @@ module "ecs" {
   ### Module Path
   source = "../../modules/ecs"
 
-  taskdef_arn            = var.taskdef_arn
+  role_for_taskdef_arn   = var.role_for_taskdef_arn
   task_definition_name   = "${var.project}-taskdef"
   container_name         = "${var.project}-container"
   image                  = module.ecr.repository_url
