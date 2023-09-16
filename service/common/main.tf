@@ -7,9 +7,11 @@ module "vpc" {
     "10.0.1.0/24",
     "10.0.2.0/24"
   ]
-  cidr_private = [
+  cidr_private_ecs = [
     "10.0.10.0/24",
-    "10.0.20.0/24",
+    "10.0.20.0/24"
+  ]
+  cidr_private_rds = [
     "10.0.100.0/24",
     "10.0.200.0/24"
   ]
@@ -22,6 +24,7 @@ module "vpc" {
   nat_gateway_name = "${var.project}-nat_gateway"
   eip_name         = "${var.project}-eip_nat_gateway"
 }
+
 
 module "ec2" {
   ### Module Path

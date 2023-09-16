@@ -1,6 +1,7 @@
 variable "cidr_vpc" {}
 variable "cidr_public" {}
-variable "cidr_private" {}
+variable "cidr_private_ecs" {}
+variable "cidr_private_rds" {}
 variable "route_table_name" {}
 variable "subnet_name" {}
 variable "igw_name" {}
@@ -12,5 +13,5 @@ variable "eip_name" {}
 
 variable "availability_zones" {
   type    = list(string)
-  default = ["ap-northeast-1a", "ap-northeast-1a", "ap-northeast-1c", "ap-northeast-1d"]
+  default = ["ap-northeast-1a", "ap-northeast-1c"]
 }
