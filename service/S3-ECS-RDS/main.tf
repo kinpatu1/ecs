@@ -2,13 +2,13 @@ module "rds" {
   ### Module Path
   source = "../../modules/rds"
 
-  rds_name            = "${var.project}-rds"
-  security_group_rds  = "${var.project}-security_group-rds"
-  vpc_id              = var.vpc_id
-  master_password     = var.master_password
-  database_name       = var.database_name
-  master_username     = "admin"
-  subnet_group        = "${var.project}-subnet_group_private"
+  rds_name               = "${var.project}-rds"
+  security_group_rds     = "${var.project}-security_group-rds"
+  vpc_id                 = var.vpc_id
+  master_password        = var.master_password
+  database_name          = var.database_name
+  master_username        = "admin"
+  subnet_group           = "${var.project}-subnet_group_private"
   private_subnet_id_rds1 = var.private_subnet_id_rds1
   private_subnet_id_rds2 = var.private_subnet_id_rds2
 }
