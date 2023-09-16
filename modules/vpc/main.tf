@@ -174,6 +174,6 @@ resource "aws_vpc_endpoint" "s3_endpoint" {
 }
 
 resource "aws_vpc_endpoint_route_table_association" "tableassociation_s3" {
-  route_table_id  = aws_route_table.public_table.id
+  route_table_id  = aws_route_table.private_table_ecs.id
   vpc_endpoint_id = aws_vpc_endpoint.s3_endpoint.id
 }
