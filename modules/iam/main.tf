@@ -1,3 +1,7 @@
+output "taskdef_arn" {
+  value = aws_iam_role.ecs_taskdef.arn
+}
+
 resource "aws_iam_role" "ecs_taskdef" {
   name = var.role_name_ecs_taskdef
 

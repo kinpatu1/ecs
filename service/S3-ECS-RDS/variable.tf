@@ -25,3 +25,8 @@ variable "public_subnet-a_id" {}
 variable "public_subnet-c_id" {}
 variable "key_name" {}
 
+####################
+#autoscaling
+####################
+
+variable "taskdef_arn" {}

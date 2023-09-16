@@ -4,8 +4,8 @@ output "ecs_cluster_name" {
 
 resource "aws_ecs_task_definition" "taskdef" {
   family             = var.task_definition_name
-  task_role_arn      = "arn:aws:iam::${var.account}:role/ecsTaskExecutionRole"
-  execution_role_arn = "arn:aws:iam::${var.account}:role/ecsTaskExecutionRole"
+  task_role_arn      = var.taskdef_arn
+  execution_role_arn = var.taskdef_arn
   container_definitions = jsonencode(
     [
       {
