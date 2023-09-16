@@ -20,7 +20,6 @@ module "vpc" {
   igw_name         = "${var.project}-igw"
   vpc_name         = "${var.project}-vpc"
   s3endpoint_name  = "${var.project}-s3endpoint"
-  public_subnet_id = module.vpc.public_subnet_id_1
   nat_gateway_name = "${var.project}-nat_gateway"
   eip_name         = "${var.project}-eip_nat_gateway"
 }
