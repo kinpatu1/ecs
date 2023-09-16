@@ -21,8 +21,6 @@ variable "private_subnet-c_id" {}
 #autoscaling
 ####################
 
-variable "public_subnet-a_id" {}
-variable "public_subnet-c_id" {}
 variable "key_name" {}
 
 ####################

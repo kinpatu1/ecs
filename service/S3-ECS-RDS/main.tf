@@ -46,8 +46,8 @@ module "autoscaling" {
   key_name                   = var.key_name
   account                    = var.account
   ecs_cluster_name           = module.ecs.ecs_cluster_name
-  private_subnet-a_id         = var.private_subnet-a_id
-  private_subnet-c_id         = var.private_subnet-c_id
+  private_subnet-a_id        = var.private_subnet-a_id
+  private_subnet-c_id        = var.private_subnet-c_id
   autoscaling_group_name     = "${var.project}-autoscaling_group"
   ecs_instance_name          = "ECS Instance - ${var.project}"
 }
