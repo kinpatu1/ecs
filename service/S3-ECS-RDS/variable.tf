@@ -12,10 +12,10 @@ variable "vpc_id" {}
 #rds
 ####################
 
-# variable "master_password" {}
-# variable "database_name" {}
-# variable "private_subnet-a_id" {}
-# variable "private_subnet-c_id" {}
+variable "master_password" {}
+variable "database_name" {}
+variable "private_subnet-a_id" {}
+variable "private_subnet-c_id" {}
 
 ####################
 #autoscaling
