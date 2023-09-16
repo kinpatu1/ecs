@@ -2,6 +2,10 @@ output "taskdef_arn" {
   value = aws_iam_role.ecs_taskdef.arn
 }
 
+####################
+#別アカウントのS3バケットポリシーにIAM role名を登録しているので、名前の変更は禁止
+####################
+
 resource "aws_iam_role" "ecs_taskdef" {
   name = var.role_name_ecs_taskdef
 

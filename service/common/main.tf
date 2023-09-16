@@ -30,6 +30,10 @@ module "ec2" {
   subnet_id              = module.vpc.public_subnet_id_1
 }
 
+####################
+#別アカウントのS3バケットポリシーにIAM role名を登録しているので、名前の変更は禁止
+####################
+
 module "iam" {
   ### Module Path
   source = "../../modules/iam"
