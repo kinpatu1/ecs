@@ -12,18 +12,10 @@ resource "aws_launch_template" "launch_template" {
   }
 
   network_interfaces {
-    associate_public_ip_address = true
-    security_groups             = [aws_security_group.application.id]
+    security_groups = [aws_security_group.application.id]
   }
 
-  user_data = base64encode(data.template_file.user_data.rendered)
-}
-
-data "template_file" "user_data" {
-  template = file("${path.module}/userdata/application")
-  vars = {
-    ecs_cluster_name = var.ecs_cluster_name
-  }
+  user_data = base64encode(templatefile("${path.module}/userdata/application", { ecs_cluster_name = var.ecs_cluster_name }))
 }
 
 resource "aws_security_group" "application" {
@@ -45,14 +37,14 @@ resource "aws_security_group" "application" {
   }
 
   ingress {
-    cidr_blocks      = ["0.0.0.0/0"]
+    cidr_blocks      = []
     from_port        = "22"
     ipv6_cidr_blocks = []
     prefix_list_ids  = []
     protocol         = "tcp"
-    security_groups  = []
     self             = false
     to_port          = "22"
+    security_groups  = [var.security_group_gateway]
   }
 }
 
@@ -72,3 +64,4 @@ resource "aws_autoscaling_group" "autoscaling_group" {
     propagate_at_launch = true
   }
 }
+  

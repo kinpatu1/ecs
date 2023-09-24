@@ -20,6 +20,16 @@ resource "aws_ecs_task_definition" "taskdef" {
             "protocol" : "tcp"
           }
         ]
+        "environment" = [
+          { "name" : "DB", "value" : "mysql" },
+          { "name" : "EXCUTE_TYPE", "value" : "${var.execute_type}" },
+          { "name" : "REGION_NAME", "value" : "ap-north-east1" },
+          { "name" : "SECRET_MANGER_FLG", "value" : "1" },
+          { "name" : "BUCKET_NAME", "value" : "${var.customer_bucket}" },
+          { "name" : "FILE_SPLIT_NUM", "value" : "1000" },
+          { "name" : "CLEANING", "value" : "0" },
+          { "name" : "ENV", "value" : "aws" }
+        ]
         "logConfiguration" : {
           "logDriver" : "awslogs",
           "options" : {

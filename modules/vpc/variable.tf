@@ -9,6 +9,7 @@ variable "vpc_name" {}
 variable "s3endpoint_name" {}
 variable "nat_gateway_name" {}
 variable "eip_name" {}
+variable "customer_bucket" {}
 
 variable "availability_zones" {
   type    = list(string)

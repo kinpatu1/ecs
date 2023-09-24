@@ -1,0 +1,11 @@
+variable "ecs_cluster_name" {}
+variable "task_definition_name" {}
+variable "role_arn_for_taskdef" {}
+variable "container_name" {}
+variable "image" {}
+variable "execute_type" {}
+variable "customer_bucket" {}
+variable "project" {}
+variable "security_group_application" {}
+variable "vpc_id" {}
+variable "security_group_gateway" {}

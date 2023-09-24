@@ -8,6 +8,8 @@ variable "ecs_service_name" {}
 variable "capacity_provider_name" {}
 variable "auto_scaling_group_arn" {}
 variable "role_arn_for_taskdef" {}
+variable "customer_bucket" {}
+variable "execute_type" {}
 
 
 

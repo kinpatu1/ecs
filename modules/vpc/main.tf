@@ -31,6 +31,8 @@ output "private_subnet_id_rds2" {
 ####################
 
 resource "aws_vpc" "vpc" {
+  enable_dns_hostnames = true
+  enable_dns_support = true
   cidr_block = var.cidr_vpc
   tags = {
     Name = var.vpc_name
@@ -155,17 +157,24 @@ resource "aws_vpc_endpoint" "s3_endpoint" {
   vpc_id       = aws_vpc.vpc.id
   service_name = "com.amazonaws.ap-northeast-1.s3"
   policy       = <<POLICY
-    {
-	      "Version": "2008-10-17",
-        "Statement": [
-            {
-                "Action": "*",
-                "Effect": "Allow",
-                "Resource": "*",
-                "Principal": "*"
-            }
-        ]
-    }
+{
+	"Version": "2008-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Principal": "*",
+			"Action": [
+				"s3:Get*",
+				"s3:List*"
+			],
+			"Resource": [
+				"arn:aws:s3:::${var.customer_bucket}",
+				"arn:aws:s3:::${var.customer_bucket}/*",
+				"arn:aws:s3:::prod-ap-northeast-1-starport-layer-bucket/*"
+			]
+		}
+	]
+}
     POLICY
 
   tags = {

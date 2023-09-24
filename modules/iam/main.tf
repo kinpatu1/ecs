@@ -40,9 +40,12 @@ resource "aws_iam_role_policy" "taskdef_policy" {
           "s3:GetObject",
           "s3:PutObject",
           "s3:ListBucket",
-          "logs:CreateLogStream",
           "logs:CreateLogGroup",
-          "logs:PutLogEvents"
+          "secretsmanager:GetSecretValue",
+          "ssmmessages:CreateControlChannel",
+          "ssmmessages:CreateDataChannel",
+          "ssmmessages:OpenControlChannel",
+          "ssmmessages:OpenDataChannel"
         ]
         Effect   = "Allow"
         Resource = "*"

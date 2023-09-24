@@ -22,6 +22,7 @@ module "vpc" {
   s3endpoint_name  = "${var.project}-s3endpoint"
   nat_gateway_name = "${var.project}-nat_gateway"
   eip_name         = "${var.project}-eip_nat_gateway"
+  customer_bucket  = var.customer_bucket
 }
 
 module "ec2" {
@@ -46,4 +47,31 @@ module "iam" {
 
   role_name_ecs_taskdef   = "${var.project}-taskdef_role"
   policy_name_ecs_taskdef = "${var.project}-taskdef_policy"
+}
+
+module "rds" {
+  ### Module Path
+  source = "../../modules/rds"
+
+  rds_name               = "${var.project}-rds"
+  security_group_rds     = "${var.project}-security_group-rds"
+  vpc_id                 = module.vpc.vpc_id
+  master_password        = var.master_password
+  database_name          = var.database_name
+  master_username        = "admin"
+  subnet_group           = "${var.project}-subnet_group_private"
+  private_subnet_id_rds1 = module.vpc.private_subnet_id_rds1
+  private_subnet_id_rds2 = module.vpc.private_subnet_id_rds2
+}
+
+module "secretsmanager" {
+  ### Module Path
+  source = "../../modules/secretsmanager_ecs"
+
+  secretsmanager_name = "${var.project}-secret_manager"
+  host                = module.rds.cluster_endpoint
+  username            = "admin"
+  password            = var.master_password
+  dbname              = var.database_name
+  slack_notification  = var.slack_notification
 }

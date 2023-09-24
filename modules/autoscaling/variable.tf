@@ -8,6 +8,7 @@ variable "autoscaling_group_name" {}
 variable "private_subnet_id_ecs1" {}
 variable "private_subnet_id_ecs2" {}
 variable "ecs_instance_name" {}
+variable "security_group_gateway" {}
 
 
 

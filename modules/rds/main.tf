@@ -2,6 +2,14 @@ output "instance_endpoint" {
   value = aws_rds_cluster_instance.instance[0].endpoint
 }
 
+output "cluster_endpoint" {
+  value = aws_rds_cluster.cluster.endpoint
+}
+
+output "cluster_id" {
+  value = aws_rds_cluster.cluster.id
+}
+
 resource "aws_rds_cluster" "cluster" {
   cluster_identifier   = var.rds_name
   engine               = "aurora-mysql"
